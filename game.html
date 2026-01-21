@@ -3,93 +3,66 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Smart Qazaq • Ойын/Тест</title>
+  <title>Smart Qazaq • Ойын</title>
   <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body>
- <main class="container">
 
-  <section class="section">
-    <h1>🎮 Ұлттық құндылықтар ойыны</h1>
-    <p>Сұрақтарға жауап беріп, біліміңді тексер!</p>
-
-    <div id="startScreen">
-      <button class="btn btnPrimary" onclick="startGame()">Ойынды бастау</button>
+<!-- HEADER -->
+<div class="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <h1>Smart Qazaq</h1>
+        <p>Ұлттық құндылық + заманауи технология</p>
+      </div>
     </div>
 
-    <div id="quizScreen" style="display:none;">
-      <h2 id="question"></h2>
-
-      <div id="answers">
-        <!-- жауаптар осында шығады -->
-      </div>
-
-      <p id="progress"></p>
-    </div>
-
-    <div id="resultScreen" style="display:none;">
-      <h2>Нәтиже</h2>
-      <p id="scoreText"></p>
-      <button class="btn" onclick="location.reload()">Қайта бастау</button>
-    </div>
-
-  </section>
-
-</main>
-
-<script src="assets/js/quiz.js"></script>
-<body>
-  <div class="topbar">
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo"></div>
-        <div>
-          <h1 data-i18n="brand_title">Smart Qazaq</h1>
-          <p data-i18n="brand_sub">Ұлттық құндылық + заманауи технология</p>
-        </div>
-      </div>
-
-      <div class="menu">
-        <a data-nav href="index.html" data-i18n="nav_home">Басты бет</a>
-        <a data-nav href="courses.html" data-i18n="nav_courses">Курс</a>
-        <a data-nav href="game.html" data-i18n="nav_game">Ойын</a>
-        <a data-nav href="contests.html" data-i18n="nav_contests">Байқаулар</a>
-        <a data-nav href="contact.html" data-i18n="nav_contact">Байланыс</a>
-        <a data-nav href="team.html" data-i18n="nav_team">Құрастырушылар</a>
-      </div>
-
-      <div class="lang">
-        <button data-lang="kk" class="active">KK</button>
-        <button data-lang="ru">RU</button>
-        <button data-lang="en">EN</button>
-      </div>
+    <div class="menu">
+      <a href="index.html">Басты бет</a>
+      <a href="courses.html">Курс</a>
+      <a href="game.html" class="active">Ойын</a>
+      <a href="contests.html">Байқаулар</a>
+      <a href="contact.html">Байланыс</a>
+      <a href="team.html">Құрастырушылар</a>
     </div>
   </div>
+</div>
+
+<!-- GAME -->
 <main class="container section">
+
   <h2>🎮 Ұлттық құндылықтар ойыны</h2>
   <p>Сұрақтарға жауап беріп, біліміңді тексер!</p>
 
-  <!-- START SCREEN -->
-  <div id="startScreen" class="quizBox">
-    <h3 style="margin-top:0">Ойынға дайынсың ба?</h3>
-    <p style="margin:10px 0 16px">
-      10 сұрақ. Әр дұрыс жауапқа 1 ұпай. Соңында нәтиже көрсетіледі.
-    </p>
-    <button id="startBtn" class="btn btnPrimary">Ойынды бастау</button>
+  <!-- START -->
+  <div id="startScreen">
+    <button class="btn btnPrimary" onclick="startGame()">Ойынды бастау</button>
   </div>
 
   <!-- QUIZ -->
-  <div id="quizBox" class="quizBox" style="display:none">
-    <div id="question">Сұрақ осында шығады</div>
+  <div id="quizScreen" style="display:none;">
+    <h3 id="question"></h3>
     <div id="answers"></div>
-    <div id="result"></div>
-    <button id="nextBtn" class="btn btnPrimary" style="display:none">Келесі сұрақ</button>
+    <p id="progress"></p>
   </div>
 
-  <!-- FINAL -->
-  <div id="final" style="display:none">
-    <h3>🎉 Ойын аяқталды!</h3>
+  <!-- RESULT -->
+  <div id="resultScreen" style="display:none;">
+    <h3>🎉 Нәтиже</h3>
     <p id="scoreText"></p>
+    <button class="btn btnPrimary" onclick="location.reload()">Қайта бастау</button>
+  </div>
+
+</main>
+
+<!-- SCRIPT -->
+<script src="assets/js/quiz.js"></script>
+
+</body>
+</html>
+
     <a href="game.html" class="btn btnPrimary">Қайта ойнау</a>
   </div>
 </main>
