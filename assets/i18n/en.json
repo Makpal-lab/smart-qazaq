@@ -1,0 +1,33 @@
+{
+  "brand_title":"Smart Qazaq",
+  "brand_sub":"Heritage + modern technology",
+  "nav_home":"Home",
+  "nav_courses":"Courses",
+  "nav_game":"Game / Test",
+  "nav_contests":"Contests",
+  "nav_contact":"Contact",
+  "nav_team":"Team",
+
+  "hero_title":"Heritage in a digital format",
+  "hero_sub":"3 languages, quiz-game, contests, and an application form. Professional static site on GitHub Pages.",
+  "btn_start":"Start course",
+  "btn_try_quiz":"Try the test",
+
+  "badge1":"3 languages: kk/ru/en",
+  "badge2":"Game + quiz system",
+  "badge3":"Application form (EmailJS)",
+
+  "sec_title":"Core features",
+  "f1_title":"Course modules",
+  "f1_desc":"Lessons, video, tasks, and progress plan.",
+  "f2_title":"Game/Test",
+  "f2_desc":"Score, results, question bank.",
+  "f3_title":"Contests",
+  "f3_desc":"Rules, categories, participation form and announcements.",
+
+  "footer":"© 2026 Smart Qazaq | Smart Bala",
+  "ph_name":"Full name",
+  "ph_email":"Email",
+  "ph_phone":"Phone (optional)",
+  "ph_msg":"Message / contest details"
+}

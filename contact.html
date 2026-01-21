@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Smart Qazaq • Байланыс</title>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+  <!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Smart Qazaq</title>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1 data-i18n="brand_title">Smart Qazaq</h1>
+          <p data-i18n="brand_sub">Ұлттық құндылық + заманауи технология</p>
+        </div>
+      </div>
+
+      <div class="menu">
+        <a data-nav href="index.html" data-i18n="nav_home">Басты бет</a>
+        <a data-nav href="courses.html" data-i18n="nav_courses">Курс</a>
+        <a data-nav href="game.html" data-i18n="nav_game">Ойын</a>
+        <a data-nav href="contests.html" data-i18n="nav_contests">Байқаулар</a>
+        <a data-nav href="contact.html" data-i18n="nav_contact">Байланыс</a>
+        <a data-nav href="team.html" data-i18n="nav_team">Құрастырушылар</a>
+      </div>
+
+      <div class="lang">
+        <button data-lang="kk" class="active">KK</button>
+        <button data-lang="ru">RU</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="card koshkar">
+          <div class="cardPad">
+            <h2 class="hTitle" data-i18n="hero_title">Ұлттық мұра — цифрлық форматта</h2>
+            <p class="hSub" data-i18n="hero_sub">...</p>
+
+            <div class="actions">
+              <a class="btn btnPrimary" href="courses.html" data-i18n="btn_start">Курсты бастау</a>
+              <a class="btn" href="game.html" data-i18n="btn_try_quiz">Тестті бастау</a>
+            </div>
+
+            <div class="badges">
+              <span class="badge" data-i18n="badge1">...</span>
+              <span class="badge" data-i18n="badge2">...</span>
+              <span class="badge" data-i18n="badge3">...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card cardPad videoWrap">
+          <video controls playsinline poster="assets/img/hero.jpg">
+            <source src="assets/media/intro.mp4" type="video/mp4"/>
+          </video>
+          <p class="small" style="margin:10px 0 0">
+            *Видеоңыз жоқ болса, intro.mp4 орнына YouTube embed қолдана аласыз.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 style="margin:0 0 12px" data-i18n="sec_title">Негізгі мүмкіндіктер</h2>
+      <div class="grid3">
+        <div class="tile">
+          <h3 data-i18n="f1_title">Курс модульдері</h3>
+          <p data-i18n="f1_desc">...</p>
+        </div>
+        <div class="tile">
+          <h3 data-i18n="f2_title">Ойын/Тест</h3>
+          <p data-i18n="f2_desc">
+</p>
+        </div>
+        <div class="tile">
+          <h3 data-i18n="f3_title">Байқаулар</h3>
+          <p data-i18n="f3_desc">...</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer" data-i18n="footer">© 2026 Smart Qazaq | Smart Bala</div>
+  </main>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
+  <div class="topbar"><div class="container nav">
+    <div class="brand"><div class="logo"></div><div>
+      <h1 data-i18n="brand_title">Smart Qazaq</h1>
+      <p data-i18n="brand_sub">...</p>
+    </div></div>
+    <div class="menu">
+      <a data-nav href="index.html" data-i18n="nav_home">...</a>
+      <a data-nav href="courses.html" data-i18n="nav_courses">...</a>
+      <a data-nav href="game.html" data-i18n="nav_game">...</a>
+      <a data-nav href="contests.html" data-i18n="nav_contests">...</a>
+      <a data-nav href="contact.html" data-i18n="nav_contact">...</a>
+      <a data-nav href="team.html" data-i18n="nav_team">...</a>
+    </div>
+    <div class="lang">
+      <button data-lang="kk">KK</button><button data-lang="ru">RU</button><button data-lang="en">EN</button>
+    </div>
+  </div></div>
+
+  <main class="container section">
+    <div class="card cardPad">
+      <h2 style="margin-top:0">📩 Өтініш қалдыру</h2>
+      <p class="small">Өтініш EmailJS арқылы көрсетілген email-ға келеді.</p>
+
+      <form id="appForm" class="form">
+        <input class="input" id="name" required
+          data-i18n-placeholder="ph_name" placeholder="Аты-жөні"/>
+        <input class="input" id="email" type="email" required
+          data-i18n-placeholder="ph_email" placeholder="Email"/>
+        <input class="input" id="phone"
+          data-i18n-placeholder="ph_phone" placeholder="Телефон (қалау бойынша)"/>
+        <textarea id="message" required
+          data-i18n-placeholder="ph_msg" placeholder="Хабарлама / байқауға қатысу мәліметі"></textarea>
+
+        <button class="btn btnPrimary" id="btnSend" type="submit">Өтініш жіберу</button>
+        <div id="status" class="small"></div>
+      </form>
+
+      <div class="notice" style="margin-top:14px">
+        EmailJS-ті қосу: service_id, template_id, public_key мәндерін contact.js ішіне қойыңыз.
+      </div>
+    </div>
+  </main>
+
+  <!-- EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script type="module">
+    import "./assets/js/app.js";
+    import { mountContact } from "./assets/js/contact.js";
+    import { applyTranslations } from "./assets/js/i18n.js";
+    setTimeout(()=>{ applyTranslations(); mountContact(); }, 80);
+  </script>
+</body>
+</html>
