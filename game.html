@@ -1,68 +1,231 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="kk">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Smart Qazaq • Ойын</title>
-  <link rel="stylesheet" href="assets/css/styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ұлттық құндылықтар ойыны</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 20px;
+    }
+    .card{
+      width: min(520px, 95vw);
+      background:#fff;
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      padding: 26px;
+      text-align:center;
+    }
+    h1{ margin: 0 0 8px; color:#0b2a6f; }
+    p{ margin: 8px 0; line-height:1.45; }
+    .muted{ opacity:.85; }
+    .btn{
+      margin-top: 14px;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn.primary{
+      background:#0b2a6f;
+      color:#fff;
+      width: 100%;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color:#0b2a6f;
+    }
+    .q{
+      font-size: 18px;
+      margin: 14px 0 10px;
+      font-weight: 700;
+      color:#12223a;
+    }
+    .answers{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .answer{
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid #d6d6d6;
+      cursor:pointer;
+      background:#fff;
+      font-size: 16px;
+      text-align:left;
+    }
+    .answer:hover{ filter: brightness(0.98); }
+    .answer:disabled{ cursor:not-allowed; opacity: .95; }
+    .correct{ background:#2ecc71 !important; color:#fff; border-color:#2ecc71 !important; }
+    .wrong{ background:#e74c3c !important; color:#fff; border-color:#e74c3c !important; }
+
+    .result{
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+    .tiny{
+      font-size: 13px;
+      opacity:.8;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="topbar">
-  <div class="container nav">
-    <div class="brand">
-      <div class="logo"></div>
-      <div>
-        <h1>Smart Qazaq</h1>
-        <p>Ұлттық құндылық + заманауи технология</p>
-      </div>
+  <!-- START SCREEN -->
+  <div class="card" id="startScreen">
+    <h1>Ұлттық құндылықтар ойыны</h1>
+    <p class="muted">Сұрақтарға жауап беріп, біліміңді тексер!</p>
+
+    <p><b>Ойынға дайынсың ба?</b></p>
+    <p class="muted">10 сұрақ. Әр дұрыс жауапқа 1 ұпай. Соңында нәтиже көрсетіледі.</p>
+
+    <button class="btn primary" onclick="startGame()">Ойынды бастау</button>
+    <p class="tiny">Кеңес: Жауап таңдаған соң дұрыс/қате бірден көрсетіледі.</p>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div class="card" id="gameScreen" style="display:none;">
+    <div class="topbar">
+      <div>Сұрақ: <span id="qCount">1</span>/10</div>
+      <div>Ұпай: <span id="score">0</span></div>
     </div>
 
-    <div class="menu">
-      <a href="index.html">Басты бет</a>
-      <a href="courses.html">Курс</a>
-      <a href="game.html" class="active">Ойын</a>
-      <a href="contests.html">Байқаулар</a>
-      <a href="contact.html">Байланыс</a>
-      <a href="team.html">Құрастырушылар</a>
+    <div class="q" id="questionText">Сұрақ</div>
+
+    <div class="answers">
+      <button class="answer" id="a0" onclick="pick(0)"></button>
+      <button class="answer" id="a1" onclick="pick(1)"></button>
+      <button class="answer" id="a2" onclick="pick(2)"></button>
+      <button class="answer" id="a3" onclick="pick(3)"></button>
     </div>
-  </div>
-</div>
 
-<!-- GAME -->
-<main class="container section">
-
-  <h2>🎮 Ұлттық құндылықтар ойыны</h2>
-  <p>Сұрақтарға жауап беріп, біліміңді тексер!</p>
-
-  <!-- START -->
-  <div id="startScreen">
-    <button class="btn btnPrimary" onclick="startGame()">Ойынды бастау</button>
+    <div class="result" id="feedback"></div>
+    <button class="btn primary" id="nextBtn" onclick="next()" style="display:none;">Келесі сұрақ ➡️</button>
   </div>
 
-  <!-- QUIZ -->
-  <div id="quizScreen" style="display:none;">
-    <h3 id="question"></h3>
-    <div id="answers"></div>
-    <p id="progress"></p>
+  <!-- END SCREEN -->
+  <div class="card" id="endScreen" style="display:none;">
+    <h1>Нәтиже</h1>
+    <p>Сен <b><span id="finalScore">0</span></b> / 10 ұпай жинадың!</p>
+    <p class="muted" id="finalText"></p>
+    <button class="btn primary" onclick="restart()">Қайта бастау</button>
   </div>
 
-  <!-- RESULT -->
-  <div id="resultScreen" style="display:none;">
-    <h3>🎉 Нәтиже</h3>
-    <p id="scoreText"></p>
-    <button class="btn btnPrimary" onclick="location.reload()">Қайта бастау</button>
-  </div>
+<script>
+  // ✅ 10 сұрақ (қаласаң, осы жерден өз сұрақтарыңды ауыстырасың)
+  const questions = [
+    { q:"Қазақ халқының ұлттық аспабы қайсы?", a:["Гитара","Домбыра","Скрипка","Барабан"], c:1 },
+    { q:"Наурыз мерекесінде дайындалатын ұлттық тағам?", a:["Сорпа","Палау","Наурыз көже","Пицца"], c:2 },
+    { q:"Үлкенді құрметтеу – бұл қандай құндылық?", a:["Тәртіп","Салт-дәстүр","Еңбек","Технология"], c:1 },
+    { q:"Қазақтың ұлттық ойыны қайсы?", a:["Көкпар","Шахмат","Волейбол","Теннис"], c:0 },
+    { q:"«Ас атасы – ...» (жалғастыр)", a:["су","нан","ет","сүт"], c:1 },
+    { q:"Қонақжайлық деген не?", a:["Қонақты сыйлау","Жеңіске жету","Көп ұйықтау","Сурет салу"], c:0 },
+    { q:"Тілге құрмет – бұл ...", a:["ұлттық құндылық","ойын","жаза","жарнама"], c:0 },
+    { q:"«Жеті ата» білу не үшін маңызды?", a:["Ойын үшін","Туыстықты тану үшін","Киім таңдау үшін","Саяхат үшін"], c:1 },
+    { q:"Қазақтың дәстүрлі баспанасы?", a:["Көпқабатты үй","Киіз үй","Кеме","Күйме"], c:1 },
+    { q:"«Отан – ...» (жалғастыр)", a:["ана","дос","жұмыс","сағат"], c:0 },
+  ];
 
-</main>
+  let idx = 0;
+  let score = 0;
+  let locked = false;
 
-<!-- SCRIPT -->
-<script src="assets/js/quiz.js"></script>
+  function startGame(){
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("gameScreen").style.display="block";
+    idx = 0;
+    score = 0;
+    show();
+  }
+
+  function show(){
+    locked = false;
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("score").innerText = score;
+    document.getElementById("qCount").innerText = idx + 1;
+
+    const q = questions[idx];
+    document.getElementById("questionText").innerText = q.q;
+
+    for(let i=0;i<4;i++){
+      const btn = document.getElementById("a"+i);
+      btn.className = "answer";
+      btn.disabled = false;
+      btn.innerText = q.a[i];
+    }
+  }
+
+  function pick(i){
+    if(locked) return;
+    locked = true;
+
+    const q = questions[idx];
+    const correct = q.c;
+
+    // бәрін өшіреміз
+    for(let k=0;k<4;k++){
+      document.getElementById("a"+k).disabled = true;
+    }
+
+    // дұрыс жауапты бояу
+    document.getElementById("a"+correct).classList.add("correct");
+
+    if(i === correct){
+      score += 1;
+      document.getElementById("score").innerText = score;
+      document.getElementById("feedback").innerText = "✅ Дұрыс жауап!";
+    } else {
+      document.getElementById("a"+i).classList.add("wrong");
+      document.getElementById("feedback").innerText = "❌ Қате! Дұрыс жауап: " + q.a[correct];
+    }
+
+    document.getElementById("nextBtn").style.display = "block";
+  }
+
+  function next(){
+    idx++;
+    if(idx >= questions.length){
+      finish();
+      return;
+    }
+    show();
+  }
+
+  function finish(){
+    document.getElementById("gameScreen").style.display="none";
+    document.getElementById("endScreen").style.display="block";
+    document.getElementById("finalScore").innerText = score;
+
+    let text = "";
+    if(score >= 9) text = "Тамаша! Ұлттық құндылықтарды өте жақсы білесің! 🇰🇿";
+    else if(score >= 6) text = "Жақсы нәтиже! Тағы қайталап көрсең, тіпті жоғары болады.";
+    else text = "Жарайсың! Енді ұлттық құндылықтар туралы көбірек оқып, қайта ойнап көр.";
+
+    document.getElementById("finalText").innerText = text;
+  }
+
+  function restart(){
+    document.getElementById("endScreen").style.display="none";
+    document.getElementById("startScreen").style.display="block";
+  }
+</script>
 
 </body>
 </html>
-
-    <a href="game.html" class="btn btnPrimary">Қайта ойнау</a>
-  </div>
-</main>
