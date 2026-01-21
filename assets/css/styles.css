@@ -238,3 +238,7 @@ textarea{min-height:120px; resize:vertical}
   50% { border-color: transparent; }
 }
 
+#startScreen {
+  background: linear-gradient(to bottom, white 45%, #0072ff 45%);
+  color: #0b2a6f;
+}
