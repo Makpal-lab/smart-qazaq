@@ -111,6 +111,8 @@ a{color:inherit; text-decoration:none}
   line-height: 1.05;
   margin:0 0 10px;
   letter-spacing: -.5px;
+  color: white;           /* алтын сары */
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 .hSub{
   margin:0 0 16px;
