@@ -57,7 +57,7 @@ a{color:inherit; text-decoration:none}
   color: var #0b1f4a;
 }
 .menu a:hover{border-color:var(--stroke); color:var(--text); background: rgba(255,255,255,.03)}
-.menu a.active{color:var(--text); border-color: rgba(246,195,67,.35); background: rgba(246,195,67,.08)}
+.menu a.active{color:blue; border-color: rgba(246,195,67,.35); background: rgba(246,195,67,.08)}
 
 .lang{
   display:flex; gap:8px; align-items:center;
